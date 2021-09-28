@@ -1,0 +1,11 @@
+﻿<h1>Login</h1>
+
+@{
+var returnUrl = ViewData["ReturnUrl"] as string;
+}
+
+<form action="/account/login?ReturnUrl=@System.Net.WebUtility.UrlEncode(returnUrl)" method="post">
+    <input type="text" name="email" value="email" />
+    <input type="password" name="password" value="password" />
+    <input type="submit" value="zaloguj" />
+</form>

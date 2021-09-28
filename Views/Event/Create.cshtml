@@ -1,0 +1,155 @@
+﻿@model Events.Models.CreateViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="newItemInfo">
+    <p>Add new <span>EVENT</span></p>
+</div>
+
+<div class="forForm">
+    <form enctype="multipart/form-data" asp-action="Create" asp-controller="Event" method="post">
+        <div>
+            <label asp-for="Name">Name</label>
+            <input type="text" asp-for="Name" />
+        </div>
+        <span asp-validation-for="Name" class="redparagraph"></span>
+        <br>
+        <div>
+            <label for="">Event Type</label>
+            <select asp-for="EventType" asp-items="Html.GetEnumSelectList<EventType>()">
+                <option>None...</option>
+            </select>
+        </div>
+        <span asp-validation-for="EventType" class="redparagraph"></span>
+        <div>
+            <label for="">Ticket Price</label>
+            <input type="text" name="" id="" />
+        </div>
+        <span asp-validation-for="TicketPrice" class="redparagraph"></span>
+        <div>
+            <label for="">Currency</label>
+            <select asp-for="Currency" asp-items="Html.GetEnumSelectList<Currency>()">
+                <option>None...</option>
+            </select>
+        </div>
+        <span asp-validation-for="Currency" class="redparagraph"></span>
+        <div>
+            <label for="">Ticket Quantity</label>
+            <input type="text" name="" id="">
+        </div>
+        <span asp-validation-for="TicketQuantity" class="redparagraph"></span>
+        <div>
+            <label for="">Start Date</label>
+            <select asp-for="Day">
+                <option>None...</option>
+                @for (int i = 1; i <= 9; i++)
+                {
+                    <option value="@i">0@{@i}</option>
+                }
+                @for (int i = 10; i <= 31; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <select asp-for="Month">
+                <option>None...</option>
+                <option value="1">Junuary</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <select asp-for="Year">
+                <option>None...</option>
+                @for (int i = DateTime.Now.Year; i <= DateTime.Now.Year + 5; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+        </div>
+        <span class="redparagraph" asp-validation-for="Day"></span>
+        <span class="redparagraph" asp-validation-for="Month"></span>
+        <span class="redparagraph" asp-validation-for="Year"></span>
+        <div>
+            <label for="">Start Hour</label>
+            <div class="optionSelecting">
+                <select asp-for="Hour">
+                    <option>None...</option>
+                    @for (int i = 0; i <= 9; i++)
+                    {
+                        <option value="@i">0@{@i}</option>
+                    }
+                    @for (int i = 10; i <= 23; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                <label for="">:</label>
+                <select asp-for="Minute">
+                    <option>None...</option>
+                    @for (int i = 0; i <= 9; i++)
+                    {
+                        <option value="@i">0@{@i}</option>
+                    }
+                    @for (int i = 10; i <= 59; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <span class="redparagraph" asp-validation-for="Hour"></span>
+        <span class="redparagraph" asp-validation-for="Minute"></span>
+        <div>
+            <label for="">Only for adults</label>
+            <select asp-for="OnlyForAdults">
+                <option>None...</option>
+                <option value="@false">No</option>
+                <option value=@true>Yes</option>
+            </select>
+        </div>
+        <span asp-validation-for="OnlyForAdults" class="redparagraph"></span>
+        <div>
+            <label for="">Street</label>
+            <input type="text" name="" id="">
+        </div>
+        <span asp-validation-for="Street" class="redparagraph"></span>
+        <div>
+            <label for="">House Number</label>
+            <input type="text" name="" id="">
+        </div>
+        <span asp-validation-for="HouseNumber" class="redparagraph"></span>
+        <div>
+            <label for="">Postal Code</label>
+            <input type="text" name="" id="">
+        </div>
+        <span asp-validation-for="PostalCode" class="redparagraph"></span>
+        <div>
+            <label for="">City</label>
+            <input type="text" name="" id="">
+        </div>
+        <span asp-validation-for="City" class="redparagraph"></span>
+        <div>
+            <label for="">Country</label>
+            <input type="text" name="" id="">
+        </div>
+        <span asp-validation-for="Country" class="redparagraph"></span>
+        <div>
+            <label for="">Title Photo</label>
+            <input type="file" name="" id="">
+        </div>
+        <span asp-validation-for="TitlePhoto" class="redparagraph"></span>
+        <div class="create">
+            <button type="submit">Create</button>
+        </div>
+    </form>
+</div>

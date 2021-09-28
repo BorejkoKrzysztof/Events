@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 minimum-scale=1" />
+    <title>@ViewData["Home"]  Events</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbarLogo">
+                <a asp-action="Index" asp-controller="Home">
+                    <p><span>E</span>vents!</p>
+                </a>
+            </div>
+            <div class="mobileNav">
+                <div class="toggleButton">
+                    <span class="buttonElement"></span>
+                    <span class="buttonElement"></span>
+                    <span class="buttonElement"></span>
+                </div>
+            </div>
+            <div class="desktopNav">
+                <ul>
+                    <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                    <span>
+                    <li><a asp-action="Index" asp-controller="Event">Events</a></li>
+                    <li><a href="">HOT</a></li>
+                    </span>
+                    <li><a href="">Login</a></li>
+                    <li><a asp-action="Aboutus" asp-controller="Home">About Us</a></li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="hiddenMenu">
+        <ul>
+            <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li><a asp-action="Index" asp-controller="Event">Events</a></li>
+            <li><a href="">Login</a></li>
+            <li><a asp-action="Aboutus" asp-controller="Home">About Us</a></li>
+            <li><a href="" class="LastMiniNavbarA">HOT</a></li>
+        </ul>
+    </div>
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <p>Created By: Krzysztof Borejko</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="~/js/script.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

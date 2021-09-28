@@ -1,0 +1,108 @@
+﻿@model Events.Models.DTOs.EventListViewModel
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<div class="searcherStripe">
+    <div class="searcher">
+        <div>
+            <form method="get">
+                <input asp-for="City" type="text" class="search" placeholder="Search in your city...">
+                <button type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+@if (Model.events.Count() != 0)
+{
+    <div class="mainList">
+        @foreach (var eventitem in Model.events)
+        {
+            <div class="element">
+                <span class="card">
+                    @if (eventitem.TitlePhoto == null)
+                    {
+                        switch (eventitem.EventType)
+                        {
+                            case Events.enums.EventType.Birthday:
+                                <img src="~/Images/EventsIMGs/Defaults/BirthDayDefault.jpg" alt="Birthday">
+                                break;
+                            case Events.enums.EventType.Party:
+                                <img src="~/Images/EventsIMGs/Defaults/PartyDefault.jpg" alt="Party">
+                                break;
+                            case Events.enums.EventType.Concert:
+                                <img src="~/Images/EventsIMGs/Defaults/ConcertDefault.jpg" alt="Concert">
+                                break;
+                            case Events.enums.EventType.Lunch:
+                                <img src="~/Images/EventsIMGs/Defaults/LaunchDefault.jpg" alt="launch">
+                                break;
+                            case Events.enums.EventType.Training:
+                                <img src="~/Images/EventsIMGs/Defaults/TrainingDefault.jpg" alt="Training">
+                                break;
+                            case Events.enums.EventType.Other:
+                                <img src="~/Images/EventsIMGs/Defaults/OtherDefault.jpg" alt="Other">
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        <img src="~/Images/EventsIMGs/Custom/@{@eventitem.Id}/@{@eventitem.TitlePhoto} " alt="custom">
+                    }
+                    <div>
+                        <p class="title">@eventitem.Name</p>
+                    </div>
+                    <div>
+                        <p>@eventitem.StartDate.ToShortDateString()</p>
+                        @switch (eventitem.StartDate.Minute)
+                        {
+                            case 0:
+                                <p>&nbsp;@eventitem.StartDate.Hour:00</p>
+                                break;
+                            case <= 9:
+                                <p>&nbsp;@{@eventitem.StartDate.Hour}:0@{@eventitem.StartDate.Minute}</p>
+                                break;
+                            case > 9:
+                                <p>&nbsp;@eventitem.StartDate.Hour:@eventitem.StartDate.Minute</p>
+                                break;
+                            default:
+                                break;
+                        }
+                    </div>
+                    <div>
+                        @if (eventitem.HouseNumber != null)
+                        {
+                            <p>@eventitem.Street @eventitem.HouseNumber @eventitem.City</p>
+                        }
+                        else
+                        {
+                            <p>@eventitem.Street @eventitem.City</p>
+                        }
+                    </div>
+                    <div>
+                        @if (eventitem.TicketPrice == 0)
+                        {
+                            <p>FREE</p>
+                        }
+                        else
+                        {
+                            <p>@eventitem.TicketPrice @eventitem.Currency</p>
+                        }
+                    </div>
+                    <button><a asp-action="Event" asp-fragment="@eventitem.Id" class="button">Details</a></button>
+                </span>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="noEvents">
+        <p>No events...</p>
+    </div>
+}
+

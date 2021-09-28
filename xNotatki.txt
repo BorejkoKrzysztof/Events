@@ -1,0 +1,5 @@
+﻿
+
+		Trzeba dokończyć formularz + zrobić gita
+
+		Sprawdzić czy działa tworzenie konta
