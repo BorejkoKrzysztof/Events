@@ -1,5 +1,5 @@
 ﻿
 
-		Trzeba dokończyć formularz + zrobić gita
+		Trzeba dokończyć formularz, tak by pole currency nie było wymagane w przypadku gdy cena biletu wynosi 0
 
 		Sprawdzić czy działa tworzenie konta
