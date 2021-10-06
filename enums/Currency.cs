@@ -13,7 +13,6 @@ namespace Events.enums
         CHF,
         CAD,
         GBP,
-        AUD,
-        Null
+        AUD
     }
 }

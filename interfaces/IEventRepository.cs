@@ -8,7 +8,7 @@ namespace Events.interfaces
 {
     public interface IEventRepository
     {
-        bool CreateEvent(CreateViewModel createdEvent);
+        void CreateEvent(CreateViewModel createdEvent);
 
         List<EventDTO> GetEventsList();
 

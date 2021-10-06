@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Events.Migrations
 {
     [DbContext(typeof(EventDbContext))]
-    [Migration("20210918165932_addTitlePhotoToEvent")]
-    partial class addTitlePhotoToEvent
+    [Migration("20211006175445_addTitlePhotoAndNullableTicketPriceToEvent")]
+    partial class addTitlePhotoAndNullableTicketPriceToEvent
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Events.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Event_Shop.Entities.Account", b =>
+            modelBuilder.Entity("Events.Entities.Account", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace Events.Migrations
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.Adress", b =>
+            modelBuilder.Entity("Events.Entities.Adress", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -104,7 +104,7 @@ namespace Events.Migrations
                     b.ToTable("Adresses");
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.Comment", b =>
+            modelBuilder.Entity("Events.Entities.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -126,14 +126,14 @@ namespace Events.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.Event", b =>
+            modelBuilder.Entity("Events.Entities.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Currency")
+                    b.Property<int?>("Currency")
                         .HasColumnType("int");
 
                     b.Property<int?>("EventCreatorId")
@@ -155,7 +155,7 @@ namespace Events.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("TicketPrice")
+                    b.Property<decimal?>("TicketPrice")
                         .HasPrecision(10, 2)
                         .HasColumnType("decimal(10,2)");
 
@@ -172,7 +172,7 @@ namespace Events.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.Participant", b =>
+            modelBuilder.Entity("Events.Entities.Participant", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -194,7 +194,7 @@ namespace Events.Migrations
                     b.ToTable("Participants");
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.Ticket", b =>
+            modelBuilder.Entity("Events.Entities.Ticket", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -216,7 +216,7 @@ namespace Events.Migrations
                     b.ToTable("Tickets");
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.User", b =>
+            modelBuilder.Entity("Events.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -245,79 +245,79 @@ namespace Events.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.Account", b =>
+            modelBuilder.Entity("Events.Entities.Account", b =>
                 {
-                    b.HasOne("Event_Shop.Entities.User", "AccountOwner")
+                    b.HasOne("Events.Entities.User", "AccountOwner")
                         .WithMany()
                         .HasForeignKey("AccountOwnerId1");
 
                     b.Navigation("AccountOwner");
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.Adress", b =>
+            modelBuilder.Entity("Events.Entities.Adress", b =>
                 {
-                    b.HasOne("Event_Shop.Entities.Event", null)
+                    b.HasOne("Events.Entities.Event", null)
                         .WithOne("EventAdress")
-                        .HasForeignKey("Event_Shop.Entities.Adress", "EventId");
+                        .HasForeignKey("Events.Entities.Adress", "EventId");
 
-                    b.HasOne("Event_Shop.Entities.User", null)
+                    b.HasOne("Events.Entities.User", null)
                         .WithOne("Adress")
-                        .HasForeignKey("Event_Shop.Entities.Adress", "UserId");
+                        .HasForeignKey("Events.Entities.Adress", "UserId");
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.Comment", b =>
+            modelBuilder.Entity("Events.Entities.Comment", b =>
                 {
-                    b.HasOne("Event_Shop.Entities.Event", null)
+                    b.HasOne("Events.Entities.Event", null)
                         .WithMany("Comments")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Event_Shop.Entities.User", null)
+                    b.HasOne("Events.Entities.User", null)
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.Event", b =>
+            modelBuilder.Entity("Events.Entities.Event", b =>
                 {
-                    b.HasOne("Event_Shop.Entities.User", "EventCreator")
+                    b.HasOne("Events.Entities.User", "EventCreator")
                         .WithMany()
                         .HasForeignKey("EventCreatorId");
 
                     b.Navigation("EventCreator");
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.Participant", b =>
+            modelBuilder.Entity("Events.Entities.Participant", b =>
                 {
-                    b.HasOne("Event_Shop.Entities.Event", null)
+                    b.HasOne("Events.Entities.Event", null)
                         .WithMany("Participants")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Event_Shop.Entities.User", null)
+                    b.HasOne("Events.Entities.User", null)
                         .WithMany("Participant")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.Ticket", b =>
+            modelBuilder.Entity("Events.Entities.Ticket", b =>
                 {
-                    b.HasOne("Event_Shop.Entities.Event", null)
+                    b.HasOne("Events.Entities.Event", null)
                         .WithMany("Tickets")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Event_Shop.Entities.User", null)
+                    b.HasOne("Events.Entities.User", null)
                         .WithMany("Tickets")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.Event", b =>
+            modelBuilder.Entity("Events.Entities.Event", b =>
                 {
                     b.Navigation("Comments");
 
@@ -329,7 +329,7 @@ namespace Events.Migrations
                     b.Navigation("Tickets");
                 });
 
-            modelBuilder.Entity("Event_Shop.Entities.User", b =>
+            modelBuilder.Entity("Events.Entities.User", b =>
                 {
                     b.Navigation("Adress")
                         .IsRequired();

@@ -29,42 +29,49 @@ namespace Events.services
         }
 
 
-        public bool CreateEvent(CreateViewModel createdEvent)
+        public void CreateEvent(CreateViewModel createdEvent)
         {
-            //var eventItem = _mapper.Map<Event>(createdEvent.Event);
-
-            //_dbContext.Events.Add(eventItem);
-            //_dbContext.SaveChanges();
-
-            //var eventId = _dbContext.Events.FirstOrDefault(x => x.Name == createdEvent.Event.Name).Id;
-
-            //string uniqueFileName = null;
-
-            //if (createdEvent.TitlePhoto != null)
-            //{
-            //    string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, $"images/eventsimgs/{eventId}");
-            //    uniqueFileName = Guid.NewGuid().ToString() + " " + createdEvent.TitlePhoto.FileName;
-            //    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-            //    using (var fileStream = new FileStream(filePath, FileMode.Create))
-            //    {
-            //        createdEvent.TitlePhoto.CopyTo(fileStream);
-            //    }
-
-            //    _dbContext.Events.FirstOrDefault(x => x.Name == createdEvent.Event.Name).TitlePhoto = uniqueFileName;
-            //    _dbContext.SaveChanges();
-            //}
+            var eventItem = new Event(createdEvent.Name[0].ToString().ToUpper()+createdEvent.Name.Substring(1),
+                                       createdEvent.EventType, createdEvent.TicketPrice, createdEvent.Currency,
+                                       createdEvent.TicketQuantity,
+                                       new DateTime(createdEvent.Year, createdEvent.Month, createdEvent.Day, createdEvent.Hour, createdEvent.Minute, 0),
+                                       createdEvent.OnlyForAdults,
+                                       new Adress(createdEvent.Street[0].ToString().ToUpper()+createdEvent.Street.Substring(1),
+                                       createdEvent.HouseNumber, createdEvent.City[0].ToString().ToUpper()+createdEvent.City.Substring(1),
+                                       createdEvent.PostalCode, createdEvent.Country[0].ToString().ToUpper()+createdEvent.Country.Substring(1)),
+                                       _dbContext.Users.FirstOrDefault(x => x.Id == 2)); // user do poprawy
 
 
-            return true;
+            _dbContext.Events.Add(eventItem);
+            _dbContext.SaveChanges();
+
+
+            if (createdEvent.TitlePhoto != null)
+            {
+                var eventId = _dbContext.Events.FirstOrDefault(x => x.Name == createdEvent.Name).Id;
+
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, $"Images/EventsIMGs/Custom/{eventId}");
+                string uniqueFileName = Guid.NewGuid().ToString() + " " + createdEvent.TitlePhoto.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                Directory.CreateDirectory(uploadsFolder);
+
+                using (var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    createdEvent.TitlePhoto.CopyTo(fileStream);
+                }
+
+                _dbContext.Events.FirstOrDefault(x => x.Name == createdEvent.Name).TitlePhoto = uniqueFileName;
+                _dbContext.SaveChanges();
+            }
+
+
         }
 
         public List<EventDTO> GetEventsList()
         {
             var events = _dbContext.Events.Include(r => r.EventAdress);
-
             var eventsDTO = _mapper.Map<List<EventDTO>>(events);
-
 
 
             return eventsDTO;
@@ -81,15 +88,13 @@ namespace Events.services
             var eventsDTO = _mapper.Map<List<EventDTO>>(events);
 
 
-
             return eventsDTO;
         }
 
         public EventDTO GetSpecificEvent(int id)
         {
-            var specificEvent = _dbContext.Events.FirstOrDefault(x => x.Id == id);
+            var eventDTO = _mapper.Map<EventDTO>(_dbContext.Events.FirstOrDefault(x => x.Id == id));
 
-            var eventDTO = _mapper.Map<EventDTO>(specificEvent);
 
             return eventDTO;
         }

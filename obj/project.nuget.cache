@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "PArLzg6CkyMBvpBcVxV78JDfdO5B8qA8uGdjpouO2Ig10GKpdTnR3kOSIdy9Pyv5OvEjmbYf4wYr3MYkatgpTg==",
+  "dgSpecHash": "7KJTg1eO9khELZV0VHgKu09KxnCifm4V4e+iCLv94fKSngXolyh2F8vIXDtqZrX+B7tWZ1hB69OlIcZy63+MmA==",
   "success": true,
   "projectFilePath": "C:\\Users\\48693\\source\\repos\\Events\\Events\\Events.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\48693\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\48693\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\48693\\.nuget\\packages\\fluentvalidation\\10.3.3\\fluentvalidation.10.3.3.nupkg.sha512",
+    "C:\\Users\\48693\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.3\\fluentvalidation.aspnetcore.10.3.3.nupkg.sha512",
+    "C:\\Users\\48693\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.3\\fluentvalidation.dependencyinjectionextensions.10.3.3.nupkg.sha512",
     "C:\\Users\\48693\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\48693\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.9\\microsoft.aspnetcore.cryptography.internal.5.0.9.nupkg.sha512",
     "C:\\Users\\48693\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.9\\microsoft.aspnetcore.cryptography.keyderivation.5.0.9.nupkg.sha512",

@@ -84,3 +84,7 @@ C:\Users\48693\source\repos\Events\Events\obj\Debug\net5.0\Razor\Views\Data\Inde
 C:\Users\48693\source\repos\Events\Events\obj\Debug\net5.0\Razor\Views\Data\FirstDeleteEvents.cshtml.g.cs
 C:\Users\48693\source\repos\Events\Events\obj\Debug\net5.0\Razor\Views\Data\FirstCreateAccounts.cshtml.g.cs
 C:\Users\48693\source\repos\Events\Events\obj\Debug\net5.0\Razor\Views\Event\Index.cshtml.g.cs
+C:\Users\48693\source\repos\Events\Events\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\48693\source\repos\Events\Events\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+C:\Users\48693\source\repos\Events\Events\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\48693\source\repos\Events\Events\obj\Debug\net5.0\Events.MvcApplicationPartsAssemblyInfo.cs

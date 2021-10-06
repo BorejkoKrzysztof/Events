@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Events.services
 {
@@ -36,7 +35,7 @@ namespace Events.services
                     },
                     _dbContext.Users.FirstOrDefault(x => x.LastName == "Borejko")),
 
-                new Event("Urodziny Roberta", Events.enums.EventType.Birthday, 0, 25, new DateTime(2021,8,25,19,30,0), true,
+                new Event("Urodziny Roberta", Events.enums.EventType.Birthday, 0, null, 25, new DateTime(2021,8,25,19,30,0), true,
                 new Adress()
                     {
                         Street = "Rock Cafe",
@@ -56,7 +55,7 @@ namespace Events.services
                     }, _dbContext.Users.FirstOrDefault(x => x.LastName == "Jantar")
                 ),
 
-                new Event("Programming skils competition", Events.enums.EventType.Other, 0, 100, new DateTime(2021,10,10,16,8,0),
+                new Event("Programming skils competition", Events.enums.EventType.Other, 0, null, 100, new DateTime(2021,10,10,16,8,0),
                 false, new Adress()
                     {
                         Street = "Paryska",
@@ -67,7 +66,7 @@ namespace Events.services
                     }, _dbContext.Users.FirstOrDefault(x => x.LastName == "Borejko")),
 
 
-                new Event("Run for 10km", Events.enums.EventType.Other, 0, 1000, new DateTime(2021,10,10,16,8,0),
+                new Event("Run for 10km", Events.enums.EventType.Other, 0, null, 1000, new DateTime(2021,10,10,16,8,0),
                 false, new Adress()
                     {
                         Street = "Półwiejska",

@@ -22,9 +22,7 @@ namespace Events
                 .ForMember(x => x.PostalCode, c => c.MapFrom(j => j.EventAdress.PostalCode))
                 .ForMember(x => x.City, c => c.MapFrom(j => j.EventAdress.City))
                 .ForMember(x => x.Country, c => c.MapFrom(j => j.EventAdress.Country));
-
-            CreateMap<EventDTO, Event>();
-                
+ 
         }
     }
 }

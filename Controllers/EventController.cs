@@ -45,7 +45,6 @@ namespace Events.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            //var model = new CreateViewModel();
             return View();
         }
 
@@ -55,7 +54,7 @@ namespace Events.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = _service.CreateEvent(createdEvent);
+                _service.CreateEvent(createdEvent);
 
                 return View("~/Views/Home/Index.cshtml");
             }

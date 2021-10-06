@@ -1,5 +1,4 @@
 ﻿using Events.enums;
-using Events.enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,22 +15,7 @@ namespace Events.Entities
 
         }
 
-        public Event(string name, EventType eventType, decimal ticketPrice, int ticketQuantity, DateTime startDate,
-                        bool onlyForAdults, Adress eventAdress, User eventCreator)
-        {
-            Name = name;
-            EventType = eventType;
-            TicketPrice = ticketPrice;
-            Currency = Currency.Null;
-            TicketQuantity = ticketQuantity;
-            StartDate = startDate;
-            OnlyForAdults = onlyForAdults;
-            EventAdress = eventAdress;
-            EventCreator = eventCreator;
-            PossibleTicketForBuyQuantity = ticketQuantity;
-        }
-
-        public Event(string name, EventType eventType, decimal ticketPrice, Currency currency, int ticketQuantity, DateTime startDate,
+        public Event(string name, EventType eventType, decimal? ticketPrice, Currency? currency, int ticketQuantity, DateTime startDate,
                         bool onlyForAdults, Adress eventAdress, User eventCreator)
         {
             Name = name;
@@ -55,12 +39,13 @@ namespace Events.Entities
         [Required]
         public EventType EventType { get; set; }
 
-        [Required]
         [Range(0,1000000)]
-        public decimal TicketPrice { get; set; }
+        public decimal? TicketPrice { get; set; }
 
-        [Required]
-        public Currency Currency { get; set; }
+
+#nullable enable
+        public Currency? Currency { get; set; }
+#nullable disable
 
         [Range(1,int.MaxValue)]
         [Required]

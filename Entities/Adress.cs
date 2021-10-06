@@ -9,13 +9,28 @@ namespace Events.Entities
 {
     public class Adress
     {
+
+        public Adress()
+        {
+
+        }
+
+        public Adress(string street, string houseNumber, string city, string postalCode, string country)
+        {
+            Street = street;
+            HouseNumber = houseNumber;
+            City = city;
+            PostalCode = postalCode;
+            Country = country;
+        }
+
         [Required]
         public int Id { get; set; }
 
         [Required]
         public string Street { get; set; }
 
-        //[Required]
+
         public string HouseNumber { get; set; }
 
         [Required]

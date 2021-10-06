@@ -1,5 +1,7 @@
 ﻿
 
-		Trzeba dokończyć formularz, tak by pole currency nie było wymagane w przypadku gdy cena biletu wynosi 0
+		Dodac usuwanie podkatalogów z katalogu custom w sytuacji usuwania eventow w kontrolerze data
 
-		Sprawdzić czy działa tworzenie konta
+		Stworzyc możliwość zapisania danych do JSON
+
+		W sytuacji tworzenia eventu zrobic przekierowanie na strone z upewnieniem prawidłowości danych
