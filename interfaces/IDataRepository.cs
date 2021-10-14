@@ -10,6 +10,8 @@ namespace Events.interfaces
         void CreateDefaultsAccounts();
         bool DeleteAccounts();
         bool CreateDefaultCollectionEvents();
-        void DeleteDefaultsCollectionEvents();
+        void DeleteCollectionOfEvents();
+        void SaveDatasToJSON();
+        void ReadDatasFromJSON();
     }
 }

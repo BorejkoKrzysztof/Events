@@ -1,9 +1,1 @@
 ﻿
-
-		Dodac usuwanie podkatalogów z katalogu custom w sytuacji usuwania eventow w kontrolerze data
-
-		Stworzyc możliwość zapisania danych do JSON
-
-		W sytuacji tworzenia eventu zrobic przekierowanie na strone z upewnieniem prawidłowości danych
-
-		DODAC tworzenie Ticketow do wlasnorecznie stworzonego eventu

@@ -39,8 +39,8 @@ namespace Events.Entities
         public List<Comment>? Comments { get; set; }
 #nullable disable
 
-        [Required]
-        public int AccountId { get; set; }
+        //[Required]
+        //public int AccountId { get; set; }
 
         [Required]
         public List<Participant> Participant { get; set; }

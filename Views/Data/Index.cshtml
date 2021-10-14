@@ -1,13 +1,15 @@
-﻿@{ 
+﻿@{
     ViewData["Title"] = "Data";
 }
 
 
 <div style="
+        margin-top:50px;
         position: absolute;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        flex-wrap: wrap;
         align-items: center;
         top: 50vh;
         left: 50vw;
@@ -19,4 +21,6 @@
     <button style="font-size: 50px;"><a asp-controller="Data" asp-action="DeleteAccounts">Usuń konta</a></button>
     <button style="font-size: 50px;"><a asp-controller="Data" asp-action="CreateEvents">Dodaj eventy</a></button>
     <button style="font-size: 50px;"><a asp-controller="Data" asp-action="DeleteEvents">Usuń eventy</a></button>
+    <button style="font-size: 50px;"><a asp-controller="Data" asp-action="SaveDataToJSON">Zapisz Dane</a></button>
+    <button style="font-size: 50px;"><a asp-controller="Data" asp-action="ReadDataFromJSON">Wczytaj Dane</a></button>
 </div>

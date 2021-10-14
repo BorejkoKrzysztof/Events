@@ -48,7 +48,21 @@ namespace Events.Controllers
 
         public IActionResult DeleteEvents()
         {
-            _service.DeleteDefaultsCollectionEvents();
+            _service.DeleteCollectionOfEvents();
+
+            return RedirectToAction("Index", "Data");
+        }
+
+        public IActionResult SaveDataToJSON()
+        {
+            _service.SaveDatasToJSON();
+
+            return RedirectToAction("Index", "Data");
+        }
+
+        public IActionResult ReadDataFromJSON()
+        {
+            _service.ReadDatasFromJSON();
 
             return RedirectToAction("Index", "Data");
         }

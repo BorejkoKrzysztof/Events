@@ -15,6 +15,6 @@ namespace Events.Entities
         public int EventId { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
     }
 }

@@ -1,0 +1,12 @@
+﻿
+
+
+		W sytuacji tworzenia eventu zrobic przekierowanie na strone z upewnieniem prawidłowości danych
+
+		DODAC tworzenie Ticketow do wlasnorecznie stworzonego eventu
+
+		poprawic kod tworzenia ticketów w Data
+
+		poprawic strone about us
+
+		poprawnosc z polskimi literami baza danych/JSON

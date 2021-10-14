@@ -42,6 +42,7 @@ namespace Events.Controllers
 
             return View(specificEvent);
         }
+
         [HttpGet]
         public IActionResult Create()
         {

@@ -30,8 +30,9 @@ namespace Events.Entities
         [Required]
         public string Street { get; set; }
 
-
-        public string HouseNumber { get; set; }
+#nullable enable
+        public string? HouseNumber { get; set; }
+#nullable disable
 
         [Required]
         public string City { get; set; }

@@ -4,14 +4,16 @@ using Events.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Events.Migrations
 {
     [DbContext(typeof(EventDbContext))]
-    partial class EventDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211009122102_addMessageToComment")]
+    partial class addMessageToComment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,7 +28,10 @@ namespace Events.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AccountOwnerId")
+                    b.Property<int>("AccountOwnerId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AccountOwnerId1")
                         .HasColumnType("int");
 
                     b.Property<long?>("BankAccountNumber")
@@ -49,7 +54,7 @@ namespace Events.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountOwnerId");
+                    b.HasIndex("AccountOwnerId1");
 
                     b.ToTable("Accounts");
                 });
@@ -181,8 +186,7 @@ namespace Events.Migrations
                     b.Property<int>("EventId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
-                        .IsRequired()
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -223,6 +227,9 @@ namespace Events.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("date");
 
@@ -246,7 +253,7 @@ namespace Events.Migrations
                 {
                     b.HasOne("Events.Entities.User", "AccountOwner")
                         .WithMany()
-                        .HasForeignKey("AccountOwnerId");
+                        .HasForeignKey("AccountOwnerId1");
 
                     b.Navigation("AccountOwner");
                 });

@@ -18,11 +18,11 @@ namespace Events.Entities
 
         public long? PayPalAccountNumber { get; set; }
 
-        [Required]
+      //  [Required]
         public User AccountOwner { get; set; }
 
-        [ForeignKey("User")]
-        public int AccountOwnerId { get; set; }
+        [ForeignKey("AccountOwner")]
+        public int? AccountOwnerId { get; set; }
 
         [Required]
         [EmailAddress]

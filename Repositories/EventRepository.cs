@@ -4,13 +4,11 @@ using Events.Entities;
 using Events.interfaces;
 using Events.Models;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Events.services
 {
@@ -31,20 +29,20 @@ namespace Events.services
 
         public void CreateEvent(CreateViewModel createdEvent)
         {
-            var eventItem = new Event(createdEvent.Name[0].ToString().ToUpper()+createdEvent.Name.Substring(1),
+            var eventItem = new Event(createdEvent.Name[0].ToString().ToUpper() + createdEvent.Name.Substring(1),
                                        createdEvent.EventType, createdEvent.TicketPrice, createdEvent.Currency,
                                        createdEvent.TicketQuantity,
                                        new DateTime(createdEvent.Year, createdEvent.Month, createdEvent.Day, createdEvent.Hour, createdEvent.Minute, 0),
                                        createdEvent.OnlyForAdults,
-                                       new Adress(createdEvent.Street[0].ToString().ToUpper()+createdEvent.Street.Substring(1),
-                                       createdEvent.HouseNumber, createdEvent.City[0].ToString().ToUpper()+createdEvent.City.Substring(1),
-                                       createdEvent.PostalCode, createdEvent.Country[0].ToString().ToUpper()+createdEvent.Country.Substring(1)),
-                                       _dbContext.Users.FirstOrDefault(x => x.Id == 2)); // user do poprawy
+                                       new Adress(createdEvent.Street[0].ToString().ToUpper() + createdEvent.Street.Substring(1),
+                                       createdEvent.HouseNumber, createdEvent.City[0].ToString().ToUpper() + createdEvent.City.Substring(1),
+                                       createdEvent.PostalCode, createdEvent.Country[0].ToString().ToUpper() + createdEvent.Country.Substring(1)),
+                                       _dbContext.Users.FirstOrDefault(x => x.LastName == "Borejko"));
+            // user do poprawy
 
 
             _dbContext.Events.Add(eventItem);
             _dbContext.SaveChanges();
-
 
             if (createdEvent.TitlePhoto != null)
             {
@@ -98,8 +96,6 @@ namespace Events.services
 
             return eventDTO;
         }
-
-
 
     }
 }

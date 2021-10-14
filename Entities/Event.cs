@@ -73,6 +73,6 @@ namespace Events.Entities
         [Required]
         public User EventCreator { get; set; }
 
-        public string TitlePhoto { get; set; }
+        public string? TitlePhoto { get; set; }
     }
 }
