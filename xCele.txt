@@ -1,5 +1,6 @@
 ﻿
 
+		wysyłanie maili z potwierdzeniem po utwozeniu uzytkownika/eventu /	dołaczenia do eventu
 
 		W sytuacji tworzenia eventu zrobic przekierowanie na strone z upewnieniem prawidłowości danych
 
