@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace Events.services
 {
@@ -286,10 +287,12 @@ namespace Events.services
             CreateJsonFileWithDbData();
         }
 
-        public void ReadDatasFromJSON()
+        public async void ReadDatasFromJSON()
         {
-            FillDbFromJSON();
+            Task<bool> myTask = FillDbFromJSON();
             CopyFilesFromBackUp();
+            var fillDbValue = await FillDbFromJSON();
+
             Directory.Delete(_configuration.GetSection("DirectoryMainBackUpFolder").Value, true);
         }
 
@@ -336,7 +339,7 @@ namespace Events.services
             File.WriteAllText(_configuration.GetSection("DirectoryBackUpJsonFile").Value, json);
         }
 
-        private void FillDbFromJSON()
+        private async Task<bool> FillDbFromJSON()
         {
             if (File.Exists(_configuration.GetSection("DirectoryBackUpJsonFile").Value))
             {
@@ -382,7 +385,7 @@ namespace Events.services
                             usersSqlCmd.Parameters.AddWithValue("@lastName", savedAccount.AccountOwner.LastName);
                             usersSqlCmd.Parameters.AddWithValue("@dateOfBirth", savedAccount.AccountOwner.DateOfBirth.ToString("yyyy-MM-dd"));
                             usersSqlCmd.Parameters.AddWithValue("@sex", (int)savedAccount.AccountOwner.Sex);
-               
+
 
                             conn.Open();
                             usersSqlCmd.Connection = conn;
@@ -573,6 +576,8 @@ namespace Events.services
                     }
                 }
             }
+
+            return true;
         }
 
         private archiveToJSON ReadFromJSONtext()
