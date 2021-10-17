@@ -289,9 +289,9 @@ namespace Events.services
 
         public async void ReadDatasFromJSON()
         {
-            Task<bool> myTask = FillDbFromJSON();
+            Task myTask = FillDbFromJSON();
             CopyFilesFromBackUp();
-            var fillDbValue = await FillDbFromJSON();
+            await myTask;
 
             Directory.Delete(_configuration.GetSection("DirectoryMainBackUpFolder").Value, true);
         }
@@ -339,7 +339,7 @@ namespace Events.services
             File.WriteAllText(_configuration.GetSection("DirectoryBackUpJsonFile").Value, json);
         }
 
-        private async Task<bool> FillDbFromJSON()
+        private async Task FillDbFromJSON()
         {
             if (File.Exists(_configuration.GetSection("DirectoryBackUpJsonFile").Value))
             {
@@ -576,8 +576,6 @@ namespace Events.services
                     }
                 }
             }
-
-            return true;
         }
 
         private archiveToJSON ReadFromJSONtext()

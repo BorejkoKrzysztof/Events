@@ -88,4 +88,3 @@ C:\Users\48693\source\repos\Events\Events\bin\Debug\net5.0\runtimes\win-arm\nati
 C:\Users\48693\source\repos\Events\Events\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\48693\source\repos\Events\Events\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\48693\source\repos\Events\Events\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\48693\source\repos\Events\Events\bin\Debug\net5.0\BACKUP\savedDatas.json
