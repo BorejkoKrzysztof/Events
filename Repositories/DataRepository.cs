@@ -281,22 +281,30 @@ namespace Events.services
                 return false;
         }
 
-        public void SaveDatasToJSON()
+        public async void SaveDatasToJSON()
         {
-            CopyFilesToBackUp();
-            CreateJsonFileWithDbData();
+            Task t1 = CopyFilesToBackUp();
+            Task t2 = CreateJsonFileWithDbData();
+            var taskList = new List<Task>();
+            taskList.Add(t1);
+            taskList.Add(t2);
+            await Task.WhenAll(taskList);
         }
 
         public async void ReadDatasFromJSON()
         {
-            Task myTask = FillDbFromJSON();
-            CopyFilesFromBackUp();
-            await myTask;
+            Task t1 = FillDbFromJSON();
+            Task t2 = CopyFilesFromBackUp();
+            var taskList = new List<Task>();
+            taskList.Add(t1);
+            taskList.Add(t2);
+            await Task.WhenAll(taskList);
+
 
             Directory.Delete(_configuration.GetSection("DirectoryMainBackUpFolder").Value, true);
         }
 
-        private void CopyFilesToBackUp()
+        private async Task CopyFilesToBackUp()
         {
             if (!Directory.Exists(_configuration.GetSection("DirectoryBackUpFiles").Value))
                 Directory.CreateDirectory(_configuration.GetSection("DirectoryBackUpFiles").Value);
@@ -323,7 +331,7 @@ namespace Events.services
             }
         }
 
-        private void CreateJsonFileWithDbData()
+        private async Task CreateJsonFileWithDbData()
         {
             var savedDatas = new archiveToJSON()
             {
@@ -584,7 +592,7 @@ namespace Events.services
             return JsonSerializer.Deserialize<archiveToJSON>(jsonText);
         }
 
-        private void CopyFilesFromBackUp()
+        private async Task CopyFilesFromBackUp()
         {
             if (Directory.Exists(_configuration.GetSection("DirectoryBackUpFiles").Value))
             {
